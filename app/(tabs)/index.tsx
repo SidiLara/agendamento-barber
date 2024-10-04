@@ -1,11 +1,11 @@
-import { Image, StyleSheet, Platform, Text } from 'react-native';
 
-import ParallaxScrollView from '@/components/ParallaxScrollView';
+import Button from '@/components/Button';
+import { View } from 'react-native';
 
 export default function HomeScreen() {
   return (
-    <>
-      <Text className='mt-10'>TESTE</Text>
-    </>
+    <View className='flex-1 justify-center items-center' >
+      <Button />
+    </View>
   );
 }
