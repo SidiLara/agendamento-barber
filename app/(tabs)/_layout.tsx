@@ -1,5 +1,3 @@
-import "../../src/styles/global.css"
-
 import { Tabs } from 'expo-router';
 import React from 'react';
 
@@ -14,23 +12,23 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: true,
+        headerShown: false,
       }}>
       <Tabs.Screen
-        name="index"
+        name='index'
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+          title: 'Inicio',
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={Colors.orange} />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name='agendamentos'
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+          title: 'Agendamentos',
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon name={focused ? 'calendar' : 'calendar-outline'} color={Colors.orange} />
           ),
         }}
       />
