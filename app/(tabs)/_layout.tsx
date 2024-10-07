@@ -19,7 +19,7 @@ export default function TabLayout() {
         options={{
           title: 'Inicio',
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={Colors.orange} />
+            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={Colors.primary}  />
           ),
         }}
       />
@@ -28,7 +28,7 @@ export default function TabLayout() {
         options={{
           title: 'Agendamentos',
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon name={focused ? 'calendar' : 'calendar-outline'} color={Colors.orange} />
+            <TabBarIcon name={focused ? 'calendar' : 'calendar-outline'} color={Colors.primary}  />
           ),
         }}
       />

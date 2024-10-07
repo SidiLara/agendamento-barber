@@ -1,8 +1,8 @@
 import React from "react";
-import { Text, TouchableOpacity, StyleSheet, ActivityIndicator, View } from "react-native";
+import { Text, TouchableOpacity, StyleSheet, ActivityIndicator, View, TouchableOpacityProps } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { Colors } from "@/constants/Colors";
 import { Tamanhos } from "@/constants/Tamanhos";
+import { variants } from "./variaveis";
 
 
 interface ButtonProps {
@@ -11,25 +11,31 @@ interface ButtonProps {
   isLoading?: boolean;
   iconName?: keyof typeof AntDesign.glyphMap;
   disabled?: true;
+  variant?: "primary" | "outline" ;
+  style?: TouchableOpacityProps["style"];
 }
 
 export function Button({
   title, onPress,
   isLoading = false,
   iconName,
-  disabled }: ButtonProps) {
+  disabled,
+  variant = "primary",
+  style,
+}: ButtonProps) {
+  const buttonVariant = variants[variant]
+  const buttonStyle = disabled ? buttonVariant.disabled : buttonVariant.enabled
 
-  const backgroundColor = disabled ? "#808080" : Colors.orange;
   return (
     <TouchableOpacity
       disabled={isLoading || disabled}
       onPress={onPress}
-      style={[styles.container, { backgroundColor }]}
+      style={[styles.container, { ...buttonStyle.button }, style]}
     >
-      {isLoading ? <ActivityIndicator color="#fff" /> :
+      {isLoading ? <ActivityIndicator color={buttonStyle.icon.color} /> :
         <View style={styles.content}>
-          {iconName && <AntDesign style={{ paddingEnd: 4 }} size={20} color={"#fff"} name={iconName} />}
-          <Text style={styles.title}> {title}</Text>
+          {iconName && <AntDesign style={{ paddingEnd: 4 }} size={20} color={buttonStyle.icon.color} name={iconName} />}
+          <Text style={[styles.title, { color: buttonStyle.title.color }]}> {title}</Text>
         </View>}
     </TouchableOpacity>
 
@@ -43,7 +49,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     width: "100%",
     borderRadius: 10,
-    height: 50
+    height: 60
   },
   content: {
     flexDirection: "row",
@@ -51,7 +57,6 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   title: {
-    color: Colors.white,
     fontWeight: "bold",
     fontSize: Tamanhos.FS_M,
     textAlign: "center"

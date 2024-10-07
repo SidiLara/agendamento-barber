@@ -16,6 +16,7 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Button
         // disabled
+        style={{ marginBottom: 20 }}
         isLoading={loading}
         title='Confirmar'
         onPress={handleButtonPress}
