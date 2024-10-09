@@ -1,6 +1,7 @@
 import { Button } from '@/components/Button/Button';
+import { Header } from '@/components/Header';
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
 
 export default function HomeScreen() {
   const [loading, setIsLoading] = useState(false);
@@ -13,15 +14,17 @@ export default function HomeScreen() {
   }
 
   return (
-    <View style={styles.container}>
-      <Button
-        // disabled
-        style={{ marginBottom: 20 }}
-        isLoading={loading}
-        title='Confirmar'
-        onPress={handleButtonPress}
-      />
-    </View>
+    <>
+      <View style={styles.container}>
+        <Button
+          // disabled
+          style={{ marginBottom: 20 }}
+          isLoading={loading}
+          title='Confirmar'
+          onPress={handleButtonPress}
+        />
+      </View>
+    </>
   );
 }
 
