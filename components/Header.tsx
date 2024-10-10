@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, TouchableOpacityProps, Image } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Button } from "./Button/Button";
 
 
 interface HeaderProps {
@@ -19,17 +20,28 @@ export function Header({
     variant = "primary",
     style,
 }: HeaderProps) {
-
+    function handleButtonPress() {
+        console.log("Pressionado")
+        setTimeout(() => {
+        }, 500);
+    }
     return (
         <>
-            <View style={styles.border}>
-                <View style={styles.container}>
+            <View style={styles.conteiner}>
+                <View style={styles.content}>
                     <Image
                         source={require("../assets/images/logo.png")}
                     />
-                    <View >
-                        {iconName && <AntDesign style={{ paddingEnd: 4 }} size={20} name={iconName} color={"#FFF"} />}
-                    </View>
+                    <Button
+                        title=""
+                        onPress={handleButtonPress}
+                        style={{
+                            backgroundColor: "none",
+                            paddingEnd: 0,
+                            width: 60,
+                        }}
+                        iconName="menufold"
+                    ></Button>
                 </View>
             </View>
         </>
@@ -39,21 +51,18 @@ export function Header({
 
 
 const styles = StyleSheet.create({
-    container: {
-        marginTop: 46,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        marginHorizontal: 16,
-    },
-    border: {
-        paddingBottom: 20,
+    conteiner: {
+        paddingBottom: 0,
         borderBottomWidth: 1,
         borderColor: "#808080",
         width: "100%"
     },
-    title: {
-        color: "#FFF"
-    },
+    content: {
+        marginTop: 34,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        paddingHorizontal: 16,
+    }
 
 })

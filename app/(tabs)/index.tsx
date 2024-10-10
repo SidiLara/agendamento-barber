@@ -1,38 +1,35 @@
-import { Button } from '@/components/Button/Button';
-import { Header } from '@/components/Header';
-import { useState } from 'react';
-import { StyleSheet, View, StatusBar } from 'react-native';
+import { Input } from '@/components/Input';
+import { StyleSheet, View, StatusBar, Text, TextInput } from 'react-native';
 
-export default function HomeScreen() {
-  const [loading, setIsLoading] = useState(false);
-  function handleButtonPress() {
-    setIsLoading(true)
-    console.log("Pressionado")
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 500);
-  }
-
-  return (
-    <>
-      <View style={styles.container}>
-        <Button
-          // disabled
-          style={{ marginBottom: 20 }}
-          isLoading={loading}
-          title='Confirmar'
-          onPress={handleButtonPress}
+const HomeScreen = () => {
+  return (<>
+    <View style={styles.container}>
+      <Text style={styles.h2}>Olá Sidinei!</Text>
+      <Text style={styles.p}>Segunda-feira, 05 de agosto</Text>
+      <View style={{ marginTop: 10 }} >
+        <Input
+          iconName='search1'
         />
       </View>
-    </>
-  );
+
+    </View>
+  </>);
 }
+
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    marginTop: 20,
     paddingHorizontal: 16
-  }
+  },
+  h2: {
+    color: "#FFF",
+    fontSize: 24
+  },
+  p: {
+    color: "#FFF",
+    fontSize: 16
+  },
 })
