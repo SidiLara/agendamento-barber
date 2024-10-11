@@ -11,7 +11,7 @@ export default function TabLayout() {
 
   return (
     <>
-      <Header iconName='menufold'></Header>
+      <Header />
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,

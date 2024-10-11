@@ -1,13 +1,18 @@
 import { Colors } from "@/constants/Colors";
 import { AntDesign } from "@expo/vector-icons";
-import { StyleSheet, TextInput, TouchableOpacityProps, View } from "react-native";
+import { StyleSheet, TextInput, TouchableOpacity, TouchableOpacityProps, View } from "react-native";
+import { ButtonSmall } from "./ButtonSmall/ButtonSmall";
 
-
+const searchPressionado = () => {
+    console.log("Search pressionado")
+}
 interface InputProps {
+    onPress: () => void;
     iconName?: keyof typeof AntDesign.glyphMap;
     style?: TouchableOpacityProps["style"];
 }
 export function Input({
+    onPress,
     iconName,
     style,
 }: InputProps) {
@@ -16,14 +21,13 @@ export function Input({
             <View style={styles.content}>
                 <TextInput
                     style={styles.textInput}
-                    placeholder="Buscar"
+                    placeholder="Faça sua busca..."
+                    placeholderTextColor={"#838896"}
                 />
-                <View style={styles.icon}>
-                    {iconName && <AntDesign
-                        size={20} 
-                        color={"#FFF"} 
-                        name={iconName} />}
-                </View>
+                <ButtonSmall
+                    onPress={onPress}
+                    iconName="search1"
+                />
             </View>
         </>
     );
@@ -44,8 +48,10 @@ const styles = StyleSheet.create({
         justifyContent: "space-between"
     },
     textInput: {
-        borderWidth: 1,
+        borderWidth: 2,
+        borderColor: "#26272B",
         backgroundColor: "#1A1B1F",
+        color: "#fff",
         paddingHorizontal: 8,
         borderRadius: 8,
         height: 40,

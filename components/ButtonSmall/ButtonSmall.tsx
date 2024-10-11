@@ -2,25 +2,24 @@ import React from "react";
 import { Text, TouchableOpacity, StyleSheet, ActivityIndicator, View, TouchableOpacityProps } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { Tamanhos } from "@/constants/Tamanhos";
-import { variants } from "./variaveis";
+import { variants } from "./variaveisBtnSmall";
 
 
 interface ButtonProps {
-  title: string;
   onPress: () => void;
   isLoading?: boolean;
   iconName?: keyof typeof AntDesign.glyphMap;
   disabled?: true;
-  variant?: "primary" | "outline" | "menor";
+  variant?: "btnSPrimary" | "btnSOutline";
   style?: TouchableOpacityProps["style"];
 }
 
-export function Button({
-  title, onPress,
+export function ButtonSmall({
+  onPress,
   isLoading = false,
   iconName,
   disabled,
-  variant = "primary",
+  variant = "btnSPrimary",
   style,
 }: ButtonProps) {
   const buttonVariant = variants[variant]
@@ -34,8 +33,7 @@ export function Button({
     >
       {isLoading ? <ActivityIndicator color={buttonStyle.icon.color} /> :
         <View style={styles.content}>
-          {iconName && <AntDesign style={{ paddingEnd: 4 }} size={20} color={buttonStyle.icon.color} name={iconName} />}
-          <Text style={[styles.title, { color: buttonStyle.title.color }]}> {title}</Text>
+          {iconName && <AntDesign size={20} color={buttonStyle.icon.color} name={iconName} />}
         </View>}
     </TouchableOpacity>
 
@@ -46,12 +44,11 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignContent: "center",
-    width: "100%",
     borderRadius: 10,
-    height: 40
+    height: 40,
+    width: 40
   },
   content: {
-    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"
   },

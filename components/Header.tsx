@@ -1,27 +1,11 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacityProps, Image } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Button } from "./Button/Button";
+import { ButtonSmall } from "./ButtonSmall/ButtonSmall";
 
 
-interface HeaderProps {
-    isLoading?: boolean;
-    iconName?: keyof typeof AntDesign.glyphMap;
-    disabled?: true;
-    variant?: "primary" | "outline";
-    style?: TouchableOpacityProps["style"];
-}
-
-export function Header({
-    isLoading = false,
-    iconName,
-    disabled,
-    variant = "primary",
-    style,
-}: HeaderProps) {
+export function Header() {
     function handleButtonPress() {
-        console.log("Pressionado")
+        console.log("Menu pressionado")
         setTimeout(() => {
         }, 500);
     }
@@ -32,16 +16,11 @@ export function Header({
                     <Image
                         source={require("../assets/images/logo.png")}
                     />
-                    <Button
-                        title=""
-                        onPress={handleButtonPress}
-                        style={{
-                            backgroundColor: "none",
-                            paddingEnd: 0,
-                            width: 60,
-                        }}
+                    <ButtonSmall
                         iconName="menufold"
-                    ></Button>
+                        style={{ backgroundColor: "transparent" }}
+                        onPress={handleButtonPress}
+                    />
                 </View>
             </View>
         </>
@@ -63,6 +42,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         paddingHorizontal: 16,
+        paddingBottom: 8,
     }
 
 })

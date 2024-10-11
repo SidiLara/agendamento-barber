@@ -6,9 +6,6 @@ export interface ButtonStyle {
     borderWidth?: number;
     borderColor?: string;
   };
-  title: {
-    color: string;
-  };
   icon: {
     color: string;
   };
@@ -19,31 +16,29 @@ export interface ButtonVariant {
   disabled: ButtonStyle;
 }
 
-export const buttonPrimary: ButtonVariant = {
+export const primaryBtnSmall: ButtonVariant = {
   enabled: {
     button: {
       backgroundColor: Colors.primary,
     },
-    title: { color: Colors.white },
+
     icon: { color: Colors.white },
   },
   disabled: {
     button: {
       backgroundColor: Colors.secundary,
     },
-    title: { color: Colors.white },
     icon: { color: Colors.white },
   },
 };
 
-export const buttonOutline: ButtonVariant = {
+export const buttonBtnOutline: ButtonVariant = {
   enabled: {
     button: {
       backgroundColor: "transparent",
       borderWidth: 2,
       borderColor: Colors.primary,
     },
-    title: { color: Colors.primary },
     icon: { color: Colors.primary },
   },
   disabled: {
@@ -52,29 +47,11 @@ export const buttonOutline: ButtonVariant = {
       borderWidth: 2,
       borderColor: Colors.secundary,
     },
-    title: { color: Colors.secundary },
     icon: { color: Colors.secundary },
-  },
-};
-export const botaoMenor: ButtonVariant = {
-  enabled: {
-    button: {
-      backgroundColor: Colors.primary,
-    },
-    title: { color: Colors.white },
-    icon: { color: Colors.white },
-  },
-  disabled: {
-    button: {
-      backgroundColor: Colors.secundary,
-    },
-    title: { color: Colors.white },
-    icon: { color: Colors.white },
   },
 };
 
 export const variants = {
-  primary: buttonPrimary,
-  outline: buttonOutline,
-  menor: botaoMenor,
+  btnSPrimary: primaryBtnSmall,
+  btnSOutline: buttonBtnOutline,
 };
